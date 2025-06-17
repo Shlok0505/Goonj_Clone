@@ -485,3 +485,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const contributeBtn = document.querySelector('.contribute-btn');
+    const donationModal = document.getElementById('donationModal');
+    const closeDonationModal = document.getElementById('closeDonationModal');
+    const donationForm = document.getElementById('donationForm');
+
+    if (contributeBtn && donationModal && closeDonationModal) {
+        contributeBtn.addEventListener('click', function() {
+            donationModal.style.display = 'block';
+        });
+        closeDonationModal.addEventListener('click', function() {
+            donationModal.style.display = 'none';
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target === donationModal) {
+                donationModal.style.display = 'none';
+            }
+        });
+    }
+
+    if (donationForm) {
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your contribution!');
+            donationModal.style.display = 'none';
+            donationForm.reset();
+        });
+    }
+});
+
